@@ -1,102 +1,58 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Prenota EcoMove</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #ffffff;
-      text-align: center;
-      padding: 40px;
-    }
-
-    h1 {
-      color: #3cff8f;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 25px;
-      width: 250px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    }
-
-    .card h2 {
-      color: #4da6ff;
-    }
-
-    .price {
-      font-size: 22px;
-      margin: 15px 0;
-    }
-
-    button {
-      background: #3cff8f;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #2ecc71;
-    }
-
-    #result {
-      margin-top: 40px;
-      font-size: 20px;
-      color: #3cff8f;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Prenota – EcoMove</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <h1>Prenota il tuo monopattino EcoMove</h1>
-  <p>Scegli la formula più adatta alle tue esigenze</p>
+<div class="container">
 
-  <div class="cards">
-    <div class="card">
-      <h2>Pay per use</h2>
-      <p class="price">€0,20 / minuto</p>
-      <button onclick="prenota('Pay per use')">Prenota</button>
+    <h1>Scegli la tua formula EcoMove</h1>
+    <p class="subtitle">Seleziona l’abbonamento più adatto alle tue esigenze</p>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card" onclick="selectPlan('Base')">
+            <h2>Base</h2>
+            <p class="price">€19/mese</p>
+            <p>Accesso base ai servizi EcoMove</p>
+            <button>Prenota</button>
+        </div>
+
+        <div class="card popular" onclick="selectPlan('Pro')">
+            <span class="badge">Più scelto</span>
+            <h2>Pro</h2>
+            <p class="price">€39/mese</p>
+            <p>Servizi completi + supporto prioritario</p>
+            <button>Prenota</button>
+        </div>
+
+        <div class="card" onclick="selectPlan('Premium')">
+            <h2>Premium</h2>
+            <p class="price">€69/mese</p>
+            <p>Esperienza completa e personalizzata</p>
+            <button>Prenota</button>
+        </div>
+
     </div>
 
-    <div class="card">
-      <h2>Abbonamento mensile</h2>
-      <p class="price">€25 / mese</p>
-      <button onclick="prenota('Abbonamento mensile')">Prenota</button>
+    <!-- LOADING -->
+    <div id="loading" class="hidden">
+        <div class="spinner"></div>
+        <p>Elaborazione prenotazione...</p>
     </div>
 
-    <div class="card">
-      <h2>Studenti</h2>
-      <p class="price">€20 / mese</p>
-      <button onclick="prenota('Abbonamento studenti')">Prenota</button>
+    <!-- SUCCESS -->
+    <div id="success" class="hidden">
+        <h2>✅ Prenotazione effettuata con successo</h2>
+        <p>Grazie per aver scelto EcoMove</p>
     </div>
-  </div>
 
-  <div id="result"></div>
+</div>
 
-  <script>
-    function prenota(tipo) {
-      const result = document.getElementById("result");
-      result.style.display = "block";
-      result.innerHTML = "✅ Prenotazione effettuata con successo<br>📦 Formula selezionata: <strong>" + tipo + "</strong>";
-    }
-  </script>
-
+<script src="script.js"></script>
 </body>
 </html>
